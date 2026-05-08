@@ -55,6 +55,41 @@
     </form>
 </section>
 
+<section class="ts-pricing-model" aria-label="Hourly planning model">
+    <div class="ts-pricing-main">
+        <div class="ts-dark-label">Hourly planning model</div>
+        <div class="ts-rate-line">
+            <span>$20-$50</span><small>/hr</small>
+        </div>
+        <p>
+            Monthly and annual planning numbers are calculated from the hourly rate using 173 average workable hours per month. The rate includes more than payroll: sourcing, evaluation, EOR, payroll, devices, MDM, security, oversight, and operating support.
+        </p>
+        <div class="ts-pricing-actions">
+            <a class="ts-pricing-button ts-pricing-button-primary" href="https://drive.google.com/uc?export=download&amp;id=1DUDmOnsiz8R5bjWaaCNPwjvBI5BBMxt-" target="_blank" rel="noopener">
+                Download enterprise pricing PDF
+            </a>
+            <a class="ts-pricing-button" href="/assets/diy-vs-deel-vs-teamstation-price-comparison.pdf" download>
+                Download DIY vs Deel vs TeamStation comparison PDF
+            </a>
+        </div>
+    </div>
+
+    <div class="ts-pricing-side">
+        <ul>
+            <li>No separate sourcing vendor</li>
+            <li>No separate EOR or payroll handoff</li>
+            <li>No separate device, MDM, or security scramble</li>
+            <li>No extra senior oversight layer to build from scratch</li>
+        </ul>
+        <div class="ts-rate-grid" aria-label="Monthly and annualized planning numbers">
+            <div><span>$20/hr</span><strong>$3,460</strong><small>per month</small></div>
+            <div><span>$30/hr</span><strong>$5,190</strong><small>per month</small></div>
+            <div><span>$40/hr</span><strong>$6,920</strong><small>per month</small></div>
+            <div><span>$50/hr</span><strong>$8,650</strong><small>per month</small></div>
+        </div>
+    </div>
+</section>
+
 <section class="ts-detail-grid" aria-label="Shortener details">
     <div>
         <span>01</span>

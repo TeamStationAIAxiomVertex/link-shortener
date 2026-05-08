@@ -5,7 +5,7 @@ html {
 body {
     min-height: 100%;
     padding-top: 70px;
-    color: #09142f;
+    color: #16213a;
     background: #ffffff;
     font-family: Inter, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.55;
@@ -17,7 +17,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #0b1a3d;
+    color: #17264a;
     text-decoration: none;
 }
 
@@ -41,7 +41,7 @@ a:focus {
 }
 
 .ts-navbar-shell {
-    border-top: 2px solid #071126;
+    border-top: 1px solid #d8deea;
     background: #ffffff;
 }
 
@@ -49,7 +49,7 @@ a:focus {
     min-height: 70px;
     margin: 0;
     border: 0;
-    border-bottom: 1px solid #dce2ec;
+    border-bottom: 1px solid #e3e8f1;
     border-radius: 0 0 18px 18px;
     background: #ffffff;
 }
@@ -60,12 +60,12 @@ a:focus {
 
 .ts-navbar .navbar-toggle {
     margin-top: 18px;
-    border-color: #cfd7e5;
+    border-color: #dce2ec;
     border-radius: 0;
 }
 
 .ts-navbar .navbar-toggle .icon-bar {
-    background: #09142f;
+    background: #23304b;
 }
 
 .ts-brand {
@@ -74,7 +74,7 @@ a:focus {
     gap: 12px;
     height: 70px;
     padding: 0 24px 0 0;
-    color: #09142f !important;
+    color: #16213a !important;
 }
 
 .ts-brand-mark {
@@ -82,9 +82,9 @@ a:focus {
     width: 42px;
     height: 42px;
     place-items: center;
-    border: 3px solid #09142f;
+    border: 2px solid #1d2945;
     border-radius: 50%;
-    box-shadow: inset 8px 0 0 #3155dc;
+    box-shadow: inset 7px 0 0 #4f70e8;
     background: #ffffff;
     font-weight: 900;
     line-height: 1;
@@ -103,7 +103,7 @@ a:focus {
 }
 
 .ts-brand-text small {
-    color: #77839b;
+    color: #8792a8;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.22em;
@@ -116,7 +116,7 @@ a:focus {
 .login-name {
     min-height: 70px;
     padding: 25px 18px;
-    color: #3a4358 !important;
+    color: #556078 !important;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.18em;
@@ -126,7 +126,7 @@ a:focus {
 .ts-nav-primary > li > a:hover,
 .ts-nav-actions > li > a:hover,
 .login-name:hover {
-    color: #09142f !important;
+    color: #17264a !important;
     background: transparent !important;
 }
 
@@ -137,18 +137,18 @@ a:focus {
     color: #ffffff !important;
     text-align: center;
     border-radius: 999px;
-    background: #3155dc !important;
+    background: #4f70e8 !important;
 }
 
 .ts-nav-actions .ts-nav-link {
     margin: 10px 0;
-    border: 1px solid #cfd7e5;
+    border: 1px solid #dce2ec;
     border-radius: 999px;
-    background: #f8fafd;
+    background: #ffffff;
 }
 
 .dropdown-menu {
-    border: 1px solid #cfd7e5;
+    border: 1px solid #dce2ec;
     border-radius: 0;
     box-shadow: none;
 }
@@ -160,7 +160,7 @@ a:focus {
 
 .login-dropdown-menu h2 {
     margin: 0 0 16px;
-    color: #09142f;
+    color: #16213a;
     font-size: 20px;
     font-weight: 900;
 }
@@ -168,7 +168,7 @@ a:focus {
 .login-form-field {
     height: 44px;
     margin-bottom: 12px;
-    border: 1px solid #cfd7e5;
+    border: 1px solid #dce2ec;
     border-radius: 0;
     box-shadow: none;
 }
@@ -180,7 +180,7 @@ a:focus {
     margin-bottom: 0;
     border: 0;
     border-radius: 0;
-    background: #3155dc;
+    background: #4f70e8;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -197,8 +197,8 @@ a:focus {
 .btn-info,
 .btn-primary,
 .btn-success {
-    border-color: #3155dc;
-    background: #3155dc;
+    border-color: #4f70e8;
+    background: #4f70e8;
 }
 
 .btn-info:hover,
@@ -207,14 +207,14 @@ a:focus {
 .btn-primary:focus,
 .btn-success:hover,
 .btn-success:focus {
-    border-color: #1432a7;
-    background: #1432a7;
+    border-color: #3658d1;
+    background: #3658d1;
 }
 
 .btn-warning,
 .btn-default {
-    color: #09142f;
-    border-color: #cfd7e5;
+    color: #17264a;
+    border-color: #dce2ec;
     background: #ffffff;
 }
 
@@ -222,19 +222,19 @@ a:focus {
 .btn-warning:focus,
 .btn-default:hover,
 .btn-default:focus {
-    color: #09142f;
-    border-color: #09142f;
-    background: #f8fafd;
+    color: #17264a;
+    border-color: #b8c2d6;
+    background: #fbfcfe;
 }
 
 .form-control {
-    border: 1px solid #cfd7e5;
+    border: 1px solid #dce2ec;
     border-radius: 0;
     box-shadow: none;
 }
 
 .form-control:focus {
-    border-color: #3155dc;
+    border-color: #6c86ee;
     box-shadow: none;
 }
 
@@ -267,17 +267,17 @@ a:focus {
     display: block;
     width: 70px;
     height: 1px;
-    background: #cfd7e5;
+    background: #dce2ec;
     content: "";
 }
 
 .ts-section-label span {
-    color: #3155dc;
+    color: #4f70e8;
 }
 
 .ts-footer {
     margin-top: 24px;
-    border-top: 1px solid #dce2ec;
+    border-top: 1px solid #e3e8f1;
     background: #ffffff;
 }
 
@@ -293,12 +293,12 @@ a:focus {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #09142f;
+    color: #16213a;
 }
 
 .ts-footer-brand:hover,
 .ts-footer-brand:focus {
-    color: #09142f;
+    color: #16213a;
 }
 
 .ts-footer-nav {
@@ -313,8 +313,8 @@ a:focus {
     min-height: 42px;
     align-items: center;
     padding: 0 16px;
-    color: #3a4358;
-    border: 1px solid #dce2ec;
+    color: #59647a;
+    border: 1px solid #e3e8f1;
     border-radius: 999px;
     background: #ffffff;
     font-size: 11px;
@@ -325,8 +325,8 @@ a:focus {
 
 .ts-footer-nav a:hover,
 .ts-footer-nav a:focus {
-    color: #09142f;
-    border-color: #09142f;
+    color: #17264a;
+    border-color: #b8c2d6;
 }
 
 @media (max-width: 991px) {
