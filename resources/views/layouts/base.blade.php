@@ -49,6 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             @yield('content')
         </div>
     </div>
+    @include('snippets.footer')
 
     {{-- Load JavaScript dependencies --}}
     <script src="/js/constants.js"></script>

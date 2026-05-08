@@ -42,6 +42,7 @@ a:focus {
 
 .ts-navbar-shell {
     border-top: 2px solid #071126;
+    background: #ffffff;
 }
 
 .navbar.ts-navbar {
@@ -49,8 +50,8 @@ a:focus {
     margin: 0;
     border: 0;
     border-bottom: 1px solid #dce2ec;
-    border-radius: 0;
-    background: rgba(248, 250, 253, 0.96);
+    border-radius: 0 0 18px 18px;
+    background: #ffffff;
 }
 
 .ts-navbar .navbar-header {
@@ -84,6 +85,7 @@ a:focus {
     border: 3px solid #09142f;
     border-radius: 50%;
     box-shadow: inset 8px 0 0 #3155dc;
+    background: #ffffff;
     font-weight: 900;
     line-height: 1;
 }
@@ -134,12 +136,14 @@ a:focus {
     padding: 15px 22px;
     color: #ffffff !important;
     text-align: center;
+    border-radius: 999px;
     background: #3155dc !important;
 }
 
 .ts-nav-actions .ts-nav-link {
     margin: 10px 0;
     border: 1px solid #cfd7e5;
+    border-radius: 999px;
     background: #f8fafd;
 }
 
@@ -271,6 +275,60 @@ a:focus {
     color: #3155dc;
 }
 
+.ts-footer {
+    margin-top: 24px;
+    border-top: 1px solid #dce2ec;
+    background: #ffffff;
+}
+
+.ts-footer-inner {
+    display: flex;
+    min-height: 112px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.ts-footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #09142f;
+}
+
+.ts-footer-brand:hover,
+.ts-footer-brand:focus {
+    color: #09142f;
+}
+
+.ts-footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.ts-footer-nav a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 0 16px;
+    color: #3a4358;
+    border: 1px solid #dce2ec;
+    border-radius: 999px;
+    background: #ffffff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.ts-footer-nav a:hover,
+.ts-footer-nav a:focus {
+    color: #09142f;
+    border-color: #09142f;
+}
+
 @media (max-width: 991px) {
     .container {
         width: min(100% - 28px, 1480px);
@@ -306,5 +364,17 @@ a:focus {
 
     .ts-brand-text small {
         font-size: 9px;
+    }
+
+    .ts-footer-inner {
+        min-height: 0;
+        padding-top: 28px;
+        padding-bottom: 28px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ts-footer-nav {
+        justify-content: flex-start;
     }
 }
