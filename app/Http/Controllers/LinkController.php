@@ -20,6 +20,13 @@ class LinkController extends Controller {
         return redirect(route('index'))->with('error', $message);
     }
 
+    private function createShortUrl(Request $request, $long_url, $custom_ending=null, $is_secret=false) {
+        $creator = session('username');
+        $link_ip = $request->ip();
+
+        return LinkFactory::createLink($long_url, $is_secret, $custom_ending, $link_ip, $creator);
+    }
+
     public function performShorten(Request $request) {
         if (env('SETTING_SHORTEN_PERMISSION') && !self::isLoggedIn()) {
             return redirect(route('index'))->with('error', 'You must be logged in to shorten links.');
@@ -34,17 +41,63 @@ class LinkController extends Controller {
         $long_url = $request->input('link-url');
         $custom_ending = $request->input('custom-ending');
         $is_secret = ($request->input('options') == "s" ? true : false);
-        $creator = session('username');
-        $link_ip = $request->ip();
 
         try {
-            $short_url = LinkFactory::createLink($long_url, $is_secret, $custom_ending, $link_ip, $creator);
+            $short_url = $this->createShortUrl($request, $long_url, $custom_ending, $is_secret);
         }
         catch (\Exception $e) {
             return self::renderError($e->getMessage());
         }
 
         return view('shorten_result', ['short_url' => $short_url]);
+    }
+
+    public function performShortenApi(Request $request) {
+        if (env('SETTING_SHORTEN_PERMISSION') && !self::isLoggedIn()) {
+            return $this->apiResponse(['error' => 'You must be logged in to shorten links.'], 403);
+        }
+
+        $long_url = $request->input('url') ?: $request->input('link-url');
+        $custom_ending = $request->input('customEnding') ?: $request->input('custom-ending');
+        $is_secret = ($request->input('secret') == true || $request->input('options') == "s");
+
+        $validator = \Validator::make([
+            'url' => $long_url,
+            'customEnding' => $custom_ending
+        ], [
+            'url' => 'required|url',
+            'customEnding' => 'alpha_dash'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->apiResponse([
+                'error' => 'Invalid request.',
+                'details' => $validator->errors()->all()
+            ], 422);
+        }
+
+        try {
+            $short_url = $this->createShortUrl($request, $long_url, $custom_ending, $is_secret);
+        }
+        catch (\Exception $e) {
+            return $this->apiResponse(['error' => $e->getMessage()], 400);
+        }
+
+        return $this->apiResponse([
+            'shortUrl' => $short_url,
+            'longUrl' => $long_url
+        ]);
+    }
+
+    public function performShortenApiOptions() {
+        return $this->apiResponse([]);
+    }
+
+    private function apiResponse($body, $status=200) {
+        return response()->json($body, $status)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept');
     }
 
     public function performRedirect(Request $request, $short_url, $secret_key=false) {

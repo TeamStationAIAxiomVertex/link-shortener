@@ -29,6 +29,10 @@ $app->get('/setup', ['as' => 'setup', 'uses' => 'SetupController@displaySetupPag
 $app->post('/setup', ['as' => 'psetup', 'uses' => 'SetupController@performSetup']);
 $app->get('/setup/finish', ['as' => 'setup_finish', 'uses' => 'SetupController@finishSetup']);
 
+$app->get('/api/shorten', ['as' => 'public_api_shorten_get', 'uses' => 'LinkController@performShortenApi']);
+$app->post('/api/shorten', ['as' => 'public_api_shorten_post', 'uses' => 'LinkController@performShortenApi']);
+$app->options('/api/shorten', ['as' => 'public_api_shorten_options', 'uses' => 'LinkController@performShortenApiOptions']);
+
 $app->get('/{short_url}', ['uses' => 'LinkController@performRedirect']);
 $app->get('/{short_url}/{secret_key}', ['uses' => 'LinkController@performRedirect']);
 

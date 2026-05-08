@@ -1,0 +1,44 @@
+# TeamStation URL Shortener
+
+TeamStation URL Shortener creates branded short links and redirects them through Polr.
+
+## Human UI
+
+- Home page: `/`
+- Paste a long TeamStation URL, submit, copy the generated short URL.
+
+## Programmatic API
+
+Endpoint:
+
+```http
+POST /api/shorten
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "https://teamstation.us/example"
+}
+```
+
+Response:
+
+```json
+{
+  "shortUrl": "https://your-short-domain/abc123",
+  "longUrl": "https://teamstation.us/example"
+}
+```
+
+GET is also supported:
+
+```http
+GET /api/shorten?url=https%3A%2F%2Fteamstation.us%2Fexample
+```
+
+Optional fields:
+
+- `customEnding`: custom slug ending, letters, numbers, dash, and underscore only.
+- `secret`: boolean. When true, Polr creates a secret short URL variant.
+
+Errors return JSON with an `error` field and appropriate HTTP status.

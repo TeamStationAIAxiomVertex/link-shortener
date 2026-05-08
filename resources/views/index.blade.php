@@ -8,17 +8,17 @@
 <section class="ts-hero">
     <div class="ts-hero-copy">
         <div class="ts-section-label"><span>01</span> / SHORT LINKS</div>
-        <h1>TeamStation links, routed cleanly.</h1>
+        <h1>TeamStation URL Shortener</h1>
         <p>
-            Convert meeting, job, proof, and operations links into controlled short URLs your team can share without visual noise.
+            Paste a TeamStation meeting, job, proof, or operations URL. Get a clean short link back and copy it in one click.
         </p>
     </div>
 
-    <form method='POST' action='/shorten' role='form' class="ts-shorten-panel">
-        <div class="ts-panel-label">Paste a TeamStation URL</div>
+    <form method='POST' action='/shorten' role='form' class="ts-shorten-panel" id="ts-shortener-form">
+        <div class="ts-panel-label">URL input</div>
         <label class="sr-only" for="link-url">Long URL</label>
         <input id="link-url" type='url' autocomplete='off'
-            class='form-control long-link-input' placeholder='https://teamstation.us/meetings/...' name='link-url' required />
+            class='form-control long-link-input' placeholder='https://teamstation.us/...' name='link-url' required />
 
         <div class='row ts-options' id='options' ng-cloak>
             <p>Customize ending</p>
@@ -52,59 +52,33 @@
             <a href='#' class='btn btn-warning' id='show-link-options'>Options</a>
         </div>
         <input type="hidden" name='_token' value='{{csrf_token()}}' />
+
+        <div class="ts-output-panel" id="ts-output-panel" hidden>
+            <div class="ts-panel-label">URL output</div>
+            <div class="ts-output-row">
+                <input id="ts-short-url-output" class="form-control" type="text" readonly aria-label="Shortened URL" />
+                <button class="btn btn-primary" type="button" id="ts-copy-short-url">Copy</button>
+            </div>
+            <p id="ts-shortener-status" class="ts-shortener-status" aria-live="polite"></p>
+        </div>
     </form>
-</section>
-
-<section class="ts-pricing-model" aria-label="Hourly planning model">
-    <div class="ts-pricing-main">
-        <div class="ts-dark-label">Hourly planning model</div>
-        <div class="ts-rate-line">
-            <span>$20-$50</span><small>/hr</small>
-        </div>
-        <p>
-            Monthly and annual planning numbers are calculated from the hourly rate using 173 average workable hours per month. The rate includes more than payroll: sourcing, evaluation, EOR, payroll, devices, MDM, security, oversight, and operating support.
-        </p>
-        <div class="ts-pricing-actions">
-            <a class="ts-pricing-button ts-pricing-button-primary" href="https://drive.google.com/uc?export=download&amp;id=1DUDmOnsiz8R5bjWaaCNPwjvBI5BBMxt-" target="_blank" rel="noopener">
-                Download enterprise pricing PDF
-            </a>
-            <a class="ts-pricing-button" href="/assets/diy-vs-deel-vs-teamstation-price-comparison.pdf" download>
-                Download DIY vs Deel vs TeamStation comparison PDF
-            </a>
-        </div>
-    </div>
-
-    <div class="ts-pricing-side">
-        <ul>
-            <li>No separate sourcing vendor</li>
-            <li>No separate EOR or payroll handoff</li>
-            <li>No separate device, MDM, or security scramble</li>
-            <li>No extra senior oversight layer to build from scratch</li>
-        </ul>
-        <div class="ts-rate-grid" aria-label="Monthly and annualized planning numbers">
-            <div><span>$20/hr</span><strong>$3,460</strong><small>per month</small></div>
-            <div><span>$30/hr</span><strong>$5,190</strong><small>per month</small></div>
-            <div><span>$40/hr</span><strong>$6,920</strong><small>per month</small></div>
-            <div><span>$50/hr</span><strong>$8,650</strong><small>per month</small></div>
-        </div>
-    </div>
 </section>
 
 <section class="ts-detail-grid" aria-label="Shortener details">
     <div>
         <span>01</span>
-        <strong>Meetings</strong>
-        <p>Cleaner calendar and coordination links.</p>
+        <strong>Simple UI</strong>
+        <p>Input a long URL, generate the short URL, copy it, and keep moving.</p>
     </div>
     <div>
         <span>02</span>
-        <strong>Jobs</strong>
-        <p>Readable job-share links for candidates and clients.</p>
+        <strong>Public API</strong>
+        <p>Codex, GPT, and automations can call <code>/api/shorten</code> with JSON.</p>
     </div>
     <div>
         <span>03</span>
-        <strong>Proof</strong>
-        <p>Short links for case studies, pricing, and operating docs.</p>
+        <strong>Redirects</strong>
+        <p>Short links redirect through Polr while keeping TeamStation branding.</p>
     </div>
 </section>
 @endsection

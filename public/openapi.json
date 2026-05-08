@@ -1,0 +1,76 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TeamStation URL Shortener API",
+    "version": "1.0.0",
+    "description": "Create TeamStation-branded short URLs and redirect through Polr."
+  },
+  "paths": {
+    "/api/shorten": {
+      "get": {
+        "summary": "Create a short URL from a query parameter",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          {
+            "name": "customEnding",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Short URL created"
+          },
+          "422": {
+            "description": "Invalid request"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a short URL",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "customEnding": {
+                    "type": "string"
+                  },
+                  "secret": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Short URL created"
+          },
+          "422": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    }
+  }
+}

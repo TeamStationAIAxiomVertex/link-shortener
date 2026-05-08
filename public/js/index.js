@@ -1,7 +1,66 @@
 $(function() {
+    var form = $('#ts-shortener-form');
+    var outputPanel = $('#ts-output-panel');
+    var output = $('#ts-short-url-output');
+    var status = $('#ts-shortener-status');
+    var copyButton = $('#ts-copy-short-url');
     var optionsButton = $('#show-link-options');
     $('#options').hide();
     var slide = 0;
+
+    form.submit(function(event) {
+        event.preventDefault();
+        status.text('Creating short URL...');
+        outputPanel.removeAttr('hidden');
+
+        var payload = {
+            url: $('#link-url').val(),
+            customEnding: $('.custom-url-field').val(),
+            secret: $('input[name="options"]:checked').val() === 's'
+        };
+
+        $.ajax({
+            url: '/api/shorten',
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: JSON.stringify(payload)
+        }).done(function(response) {
+            output.val(response.shortUrl);
+            status.text('Short URL ready.');
+            output.focus().select();
+        }).fail(function(jqXHR) {
+            var response = jqXHR.responseJSON || {};
+            output.val('');
+            status.text(response.error || 'Unable to create short URL.');
+        });
+    });
+
+    copyButton.click(function() {
+        var value = output.val();
+        if (!value) {
+            status.text('Create a short URL first.');
+            return;
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(function() {
+                status.text('Copied to clipboard.');
+            }, function() {
+                output.focus().select();
+                status.text('Select and copy the short URL.');
+            });
+            return;
+        }
+
+        output.focus().select();
+        document.execCommand('copy');
+        status.text('Copied to clipboard.');
+    });
+
     optionsButton.click(function(event) {
         event.preventDefault();
         if (slide === 0) {
@@ -32,7 +91,7 @@ $(function() {
             } else if (msg == 'invalid') {
                 $('#link-availability-status').html('<span style="color:orange"><i class="fa fa-exclamation-triangle"></i> Invalid Custom URL Ending</span>');
             } else {
-                $('#link-availability-status').html(' <span style="color:red"><i class="fa fa-exclamation-circle"></i> An error occured. Try again</span>' + msg);
+                $('#link-availability-status').html(' <span style="color:red"><i class="fa fa-exclamation-circle"></i> An error occurred. Try again</span>' + msg);
             }
         });
 
