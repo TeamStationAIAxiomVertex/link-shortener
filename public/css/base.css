@@ -1,29 +1,237 @@
+html {
+    min-height: 100%;
+}
+
 body {
-    padding-top: 60px;
+    min-height: 100%;
+    padding-top: 70px;
+    color: #09142f;
+    background: #ffffff;
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+}
+
+a {
+    color: #2f55db;
+}
+
+a:hover,
+a:focus {
+    color: #0b1a3d;
+    text-decoration: none;
+}
+
+.container {
+    width: min(100% - 48px, 1480px);
+    max-width: 1480px;
+}
+
+.content-div {
+    text-align: left;
+    background-color: transparent;
+}
+
+.content-div-padding {
+    padding-top: 70px;
+    padding-bottom: 88px;
+}
+
+.large-content-div {
+    text-align: center;
+}
+
+.ts-navbar-shell {
+    border-top: 2px solid #071126;
+}
+
+.navbar.ts-navbar {
+    min-height: 70px;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #dce2ec;
+    border-radius: 0;
+    background: rgba(248, 250, 253, 0.96);
+}
+
+.ts-navbar .navbar-header {
+    min-height: 70px;
+}
+
+.ts-navbar .navbar-toggle {
+    margin-top: 18px;
+    border-color: #cfd7e5;
+    border-radius: 0;
+}
+
+.ts-navbar .navbar-toggle .icon-bar {
+    background: #09142f;
+}
+
+.ts-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 70px;
+    padding: 0 24px 0 0;
+    color: #09142f !important;
+}
+
+.ts-brand-mark {
+    display: inline-grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 3px solid #09142f;
+    border-radius: 50%;
+    box-shadow: inset 8px 0 0 #3155dc;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.ts-brand-text {
+    display: grid;
+    gap: 1px;
+}
+
+.ts-brand-text strong {
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ts-brand-text small {
+    color: #77839b;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.ts-nav-primary > li > a,
+.ts-nav-actions > li > a,
+.login-name {
+    min-height: 70px;
+    padding: 25px 18px;
+    color: #3a4358 !important;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.ts-nav-primary > li > a:hover,
+.ts-nav-actions > li > a:hover,
+.login-name:hover {
+    color: #09142f !important;
+    background: transparent !important;
+}
+
+.ts-nav-actions .ts-nav-cta {
+    min-width: 132px;
+    margin: 10px 0 10px 10px;
+    padding: 15px 22px;
+    color: #ffffff !important;
+    text-align: center;
+    background: #3155dc !important;
+}
+
+.ts-nav-actions .ts-nav-link {
+    margin: 10px 0;
+    border: 1px solid #cfd7e5;
+    background: #f8fafd;
+}
+
+.dropdown-menu {
+    border: 1px solid #cfd7e5;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .login-dropdown-menu {
-    padding: 15px;
-    padding-bottom: 0px;
+    min-width: 300px;
+    padding: 18px;
+}
+
+.login-dropdown-menu h2 {
+    margin: 0 0 16px;
+    color: #09142f;
+    font-size: 20px;
+    font-weight: 900;
 }
 
 .login-form-field {
-    margin-bottom: 15px;
+    height: 44px;
+    margin-bottom: 12px;
+    border: 1px solid #cfd7e5;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .login-form-submit {
     clear: left;
     width: 100%;
-    margin-bottom: 15px;
+    height: 44px;
+    margin-bottom: 0;
+    border: 0;
+    border-radius: 0;
+    background: #3155dc;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
-.content-div {
-    text-align: left;
-    background-color: rgba(0,0,0,0);
+.btn {
+    border-radius: 0;
+    box-shadow: none;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
-.large-content-div {
-    text-align: center;
+.btn-info,
+.btn-primary,
+.btn-success {
+    border-color: #3155dc;
+    background: #3155dc;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-success:hover,
+.btn-success:focus {
+    border-color: #1432a7;
+    background: #1432a7;
+}
+
+.btn-warning,
+.btn-default {
+    color: #09142f;
+    border-color: #cfd7e5;
+    background: #ffffff;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-default:hover,
+.btn-default:focus {
+    color: #09142f;
+    border-color: #09142f;
+    background: #f8fafd;
+}
+
+.form-control {
+    border: 1px solid #cfd7e5;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #3155dc;
+    box-shadow: none;
 }
 
 .login-name {
@@ -38,14 +246,65 @@ body {
     text-align: left;
 }
 
-@media (min-width: 768px) {
+.ts-section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    color: #7f8aa0;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.ts-section-label::after {
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: #cfd7e5;
+    content: "";
+}
+
+.ts-section-label span {
+    color: #3155dc;
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: min(100% - 28px, 1480px);
+    }
+
     .content-div-padding {
-        padding-top: 4em;
+        padding-top: 44px;
+    }
+
+    .ts-brand {
+        padding-left: 14px;
+    }
+
+    .ts-nav-primary > li > a,
+    .ts-nav-actions > li > a {
+        min-height: auto;
+        padding: 14px 18px;
     }
 }
 
-@media (max-width: 768px) {
-    .content-div-padding {
-        padding-top: 1em;
+@media (max-width: 767px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .ts-navbar .navbar-collapse {
+        border-color: #dce2ec;
+    }
+
+    .ts-brand-text strong {
+        font-size: 13px;
+    }
+
+    .ts-brand-text small {
+        font-size: 9px;
     }
 }

@@ -1,6 +1,6 @@
-<div class="container-fluid">
-    <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<div class="ts-navbar-shell">
+    <nav role="navigation" class="navbar navbar-default navbar-fixed-top ts-navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar-primary">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -9,11 +9,17 @@
 
         <!-- Output sign in/sign out buttons appropriately -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('index') }}">{{env('APP_NAME')}}</a>
+            <a class="navbar-brand ts-brand" href="{{ route('index') }}">
+                <span class="ts-brand-mark">T</span>
+                <span class="ts-brand-text">
+                    <strong>{{env('APP_NAME')}}</strong>
+                    <small>LINK ROUTING OS</small>
+                </span>
+            </a>
         </div>
 
-        <ul id="navbar" class="nav navbar-collapse collapse navbar-nav" id="nbc">
-		    <li><a href="{{ route('about') }}">About</a></li>
+        <ul id="navbar-primary" class="nav navbar-collapse collapse navbar-nav ts-nav-primary">
+            <li><a href="{{ route('about') }}">About</a></li>
 
             @if (empty(session('username')))
                 <li class="visible-xs"><a href="{{ route('login') }}">Sign In</a></li>
@@ -27,16 +33,16 @@
             @endif
         </ul>
 
-        <ul id="navbar" class="nav pull-right navbar-nav hidden-xs">
+        <ul class="nav pull-right navbar-nav hidden-xs ts-nav-actions">
             <li class="divider-vertical"></li>
 
             @if (empty(session('username')))
                 @if (env('POLR_ALLOW_ACCT_CREATION'))
-                    <li><a href="{{route('signup')}}">Sign Up</a></li>
+                    <li><a class="ts-nav-link" href="{{route('signup')}}">Create Account</a></li>
                 @endif
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <a class="dropdown-toggle ts-nav-cta" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                     <div class="dropdown-menu pull-right login-dropdown-menu" id="dropdown">
                         <h2>Login</h2>
                         <form action="login" method="POST" accept-charset="UTF-8">
@@ -50,7 +56,7 @@
             @else
                 <div class='nav pull-right navbar-nav'>
                     <li class='dropdown'>
-                    <a class="dropdown-toggle login-name" href="#" data-toggle="dropdown">{{session('username')}} <strong class="caret"></strong></a>
+                    <a class="dropdown-toggle login-name ts-nav-cta" href="#" data-toggle="dropdown">{{session('username')}} <strong class="caret"></strong></a>
                         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
                             <li><a tabindex="-1" href="{{ route('admin') }}">Dashboard</a></li>
                             <li><a tabindex="-1" href="{{ route('admin') }}#settings">Settings</a></li>

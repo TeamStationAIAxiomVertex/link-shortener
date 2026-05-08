@@ -2,7 +2,8 @@ $(function() {
     var optionsButton = $('#show-link-options');
     $('#options').hide();
     var slide = 0;
-    optionsButton.click(function() {
+    optionsButton.click(function(event) {
+        event.preventDefault();
         if (slide === 0) {
             $("#options").slideDown();
             slide = 1;
@@ -11,7 +12,8 @@ $(function() {
             slide = 0;
         }
     });
-    $('#check-link-availability').click(function() {
+    $('#check-link-availability').click(function(event) {
+        event.preventDefault();
         var custom_link = $('.custom-url-field').val();
         var request = $.ajax({
             url: "/api/v2/link_avail_check",
@@ -35,33 +37,9 @@ $(function() {
         });
 
         request.fail(function(jqXHR, textStatus) {
-            $('#link-availability-status').html(' <span style="color:red"><i class="fa fa-exclamation-circle"></i> An error occured. Try again</span>' + textstatus);
+            $('#link-availability-status').html(' <span style="color:red"><i class="fa fa-exclamation-circle"></i> An error occurred. Try again</span>' + textStatus);
         });
     });
-    min = 1;
-    max = 2;
-    var i = Math.floor(Math.random() * (max - min + 1)) + min;
-    changeTips(i);
-    var tipstimer = setInterval(function() {
-        changeTips(i);
-        i++;
-    }, 8000);
-
-    function setTip(tip) {
-        $("#tips").html(tip);
-    }
-
-    function changeTips(tcase) {
-        switch (tcase) {
-            case 1:
-                setTip('Create an account to keep track of your links');
-                break;
-            case 2:
-                setTip('Did you know you can change the URL ending by clicking on "Link Options"?');
-                i = 1;
-                break;
-        }
-    }
 });
 
 $(function() {

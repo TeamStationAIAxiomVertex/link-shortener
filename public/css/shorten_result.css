@@ -1,33 +1,66 @@
-.result-box {
-    width: 50%;
-    display: block;
-    margin : 0 auto;
-
-}
-
-.btn {
-    margin-top: 30px;
-}
-
 .content-div {
-    text-align: center;
+    text-align: left;
+}
+
+.ts-result-shell {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.ts-result-shell h1 {
+    max-width: 780px;
+    margin: 0 0 34px;
+    color: #09142f;
+    font-size: clamp(44px, 5vw, 76px);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.98;
+}
+
+.input-group {
+    width: 100%;
+    margin: 0;
+}
+
+.result-box {
+    display: block;
+    width: 100%;
+    height: 58px;
+    color: #09142f;
+    background: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.input-group-addon {
+    min-width: 58px;
+    padding: 0 18px;
+    color: #3155dc;
+    border-color: #cfd7e5;
+    border-radius: 0;
+    background: #f8fafd;
+    cursor: pointer;
+}
+
+.ts-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.ts-form-actions .btn {
+    min-height: 48px;
+    padding: 13px 22px;
 }
 
 .qr-code-container {
     display: none;
-    margin-top: 2em;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid #dce2ec;
 }
 
 .qr-code-container img {
     display: inline !important;
-}
-
-.input-group {
-    width: 40vw;
-    margin: 0 auto;
-}
-
-.input-group-addon {
-    padding: 0px 10px;
-    cursor: pointer;
 }
