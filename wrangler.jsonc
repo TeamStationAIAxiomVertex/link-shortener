@@ -9,7 +9,6 @@
     "head_sampling_rate": 1
   },
   "vars": {
-    "PUBLIC_BASE_URL": "http://localhost:8787",
     "ALLOWED_ORIGINS": "https://teamstation.us,https://www.teamstation.us,https://cto.teamstation.dev"
   }
 }

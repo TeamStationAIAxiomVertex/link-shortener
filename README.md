@@ -39,11 +39,13 @@ Set the production secret before deploy:
 npx wrangler secret put LINK_SECRET
 ```
 
-Set `PUBLIC_BASE_URL` in `wrangler.jsonc` to the deployed domain before production deploy, for example:
+Optionally set `PUBLIC_BASE_URL` in `wrangler.jsonc` to a custom production domain, for example:
 
 ```jsonc
 "PUBLIC_BASE_URL": "https://go.teamstation.us"
 ```
+
+If `PUBLIC_BASE_URL` is omitted, generated links use the incoming request origin.
 
 Deploy:
 
