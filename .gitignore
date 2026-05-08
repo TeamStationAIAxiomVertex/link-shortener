@@ -1,7 +1,8 @@
-node_modules/
-.wrangler/
-dist/
-coverage/
-*.log
+/vendor
+bootstrap/cache/
+storage/
+env
 .env
-.dev.vars
+.env.bak
+.env.example
+composer.phar

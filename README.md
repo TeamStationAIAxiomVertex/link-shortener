@@ -1,64 +1,81 @@
-# TeamStation Link Shortener
+<img src="https://i.imgur.com/ckI6GTu.png" width="350px" alt="Polr Logo" />
 
-Stateless Cloudflare Worker URL shortener for TeamStation links.
 
-## Design
+:aerial_tramway: A modern, minimalist, and lightweight URL shortener.
 
-This app does not use a database, KV namespace, Durable Object, analytics table, or any other link store. Instead, each short link carries a compact signed payload:
+[![GitHub license](https://img.shields.io/badge/license-GPLv2%2B-blue.svg)]()
+[![GitHub release](https://img.shields.io/github/release/cydrobolt/polr.svg)](https://github.com/cydrobolt/polr/releases)
+[![Builds status](https://travis-ci.org/cydrobolt/polr.svg)](https://travis-ci.org/cydrobolt/polr)
+[![Docs](https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat)](http://polr.readthedocs.org/en/latest/)
 
-- The destination URL is normalized and encoded into the token.
-- The token is signed with `LINK_SECRET` using HMAC-SHA-256.
-- Redirects are only allowed for configured TeamStation origins.
-- A tampered token returns `404` instead of redirecting.
 
-Because there is no storage, generated links cannot be tiny opaque slugs like `abc123` unless a store is added later. The tradeoff is operational simplicity and no retained link records.
+Polr is an intrepid, self-hostable open-source link shortening web application with a robust API. It allows you to host your own URL shortener, to brand your URLs, and to gain control over your data. Polr is especially easy to use, and provides a modern, themable feel.
 
-## Routes
+[Getting Started](http://docs.polrproject.org/en/latest/user-guide/installation/) - [API Documentation](http://docs.polrproject.org/en/latest/developer-guide/api/) - [Contributing](https://github.com/cydrobolt/polr/blob/master/.github/CONTRIBUTING.md) - [Bugs](https://github.com/cydrobolt/polr/issues) - [IRC](http://webchat.freenode.net/?channels=#polr)
 
-- `GET /` - small form UI
-- `GET /api/shorten?url=https://teamstation.us/...` - create a short URL
-- `POST /api/shorten` with `{ "url": "https://teamstation.us/..." }` - create a short URL
-- `GET /r/:token` - redirect to the signed destination
-- `GET /health` - health check
+### Quickstart
 
-## Local setup
+Polr is written in PHP and Lumen, using MySQL as its primary database.
 
-```bash
-npm install
-printf 'LINK_SECRET="%s"\n' "$(openssl rand -base64 32)" > .dev.vars
-npm run dev
-```
+ - To get started with Polr on your server, check out the [installation guide](http://docs.polrproject.org/en/latest/user-guide/installation/). You can clone this repository, or download a [release](https://github.com/cydrobolt/polr/releases).
+ - To get started with the Polr API, check out the [API guide](http://docs.polrproject.org/en/latest/developer-guide/api/).
 
-Then open `http://localhost:8787`.
 
-## Cloudflare setup
+Installation TL;DR: clone or download this repository, set document root to `public/`, create MySQL database, go to `yoursite.com/setup` and follow instructions.
 
-Set the production secret before deploy:
+### Demo
 
-```bash
-npx wrangler secret put LINK_SECRET
-```
+To test out the demo, head to [demo.polr.me](http://demo.polr.me) and use the following credentials:
 
-Optionally set `PUBLIC_BASE_URL` in `wrangler.jsonc` to a custom production domain, for example:
+- Username: `demo-admin`
+- Password: `demo-admin`
 
-```jsonc
-"PUBLIC_BASE_URL": "https://go.teamstation.us"
-```
+### Upgrading Polr
+*Upgrading from 1.x:*
 
-If `PUBLIC_BASE_URL` is omitted, generated links use the incoming request origin.
+There are breaking changes between 2.x and 1.x; it is not yet possible to automatically upgrade to 2.x.
 
-Deploy:
+*Upgrading from 2.x:*
+ - Back up your database and files
+ - Update by using `git pull` or downloading a release
+ - Run `composer install --no-dev -o` to ensure dependencies are up to date
+ - Migrate with `php artisan migrate` to ensure database structure is up to date
 
-```bash
-npm run deploy
-```
+#### Browser Extensions
 
-## Configuration
+* Safari - [Polr.safariextension](https://github.com/cleverdevil/Polr.safariextension)
 
-`ALLOWED_ORIGINS` is a comma-separated allowlist:
+#### Libraries
 
-```jsonc
-"ALLOWED_ORIGINS": "https://teamstation.us,https://www.teamstation.us,https://cto.teamstation.dev"
-```
+* Python - [mypolr](https://github.com/fauskanger/mypolr)
 
-Add meeting or job-link hosts here before deploying if they live on a different TeamStation-controlled domain.
+#### Acknowledgements
+We would like to thank Oregon State University's Open Source Lab for providing resources for our infrastructure. The Polr website and demo are hosted on their infrastructure.
+
+<a href="//osuosl.org"><img height="100em" src="http://i.imgur.com/1VtLxyX.png" /></a>
+
+Thank you to [lastspark](https://thenounproject.com/lastspark/) for providing our logo's icon.
+
+#### Versioning
+
+Polr uses [Semantic Versioning](http://semver.org/)
+
+
+#### License
+
+
+    Copyright (C) 2013-2018 Chaoyi Zha
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
