@@ -25,6 +25,8 @@ class UserFactory {
         $user->role = $role;
         $user->api_key = $api_key;
         $user->api_active = $api_active;
+        $user->created_at = date('Y-m-d H:i:s');
+        $user->updated_at = $user->created_at;
 
         $user->save();
         return $user;

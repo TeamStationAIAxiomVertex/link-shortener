@@ -37,6 +37,17 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "audit": {
+            "block-insecure": false
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php scripts/patch-carbon.php"
+        ],
+        "post-update-cmd": [
+            "php scripts/patch-carbon.php"
+        ]
     }
 }

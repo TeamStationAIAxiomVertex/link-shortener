@@ -61,6 +61,10 @@ $app->singleton(
 */
 
 $app->middleware([
+    Illuminate\Cookie\Middleware\EncryptCookies::class,
+    App\Http\Middleware\StartSession::class,
+    Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    App\Http\Middleware\VerifyCsrfToken::class,
 ]);
 
 $app->routeMiddleware([

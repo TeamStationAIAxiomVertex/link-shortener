@@ -23,6 +23,42 @@
     line-height: 1.55;
 }
 
+.ts-hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.ts-hero-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid #d4dbe8;
+    color: #16213a;
+    background: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.ts-hero-links a:first-child {
+    color: #ffffff;
+    border-color: #3156d4;
+    background: #3156d4;
+}
+
+.ts-hero-links a:hover,
+.ts-hero-links a:focus {
+    color: #ffffff;
+    border-color: #16213a;
+    background: #16213a;
+    text-decoration: none;
+}
+
 .ts-shorten-panel {
     display: grid;
     gap: 18px;

@@ -12,6 +12,10 @@
         <p>
             Paste a TeamStation meeting, job, proof, or operations URL. Get a clean short link back and copy it in one click.
         </p>
+        <div class="ts-hero-links">
+            <a href="{{ route('login') }}">Admin Login</a>
+            <a href="{{ route('admin') }}">Dashboard</a>
+        </div>
     </div>
 
     <form method='POST' action='/shorten' role='form' class="ts-shorten-panel" id="ts-shortener-form">

@@ -60,6 +60,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <script src="/js/base.js"></script>
 
     <script>
+    @if (Session::has('info'))
+        toastr["info"](`{{ str_replace('`', '\`', session('info')) }}`, "Info")
+    @endif
+    @if (Session::has('error'))
+        toastr["error"](`{{str_replace('`', '\`', session('error')) }}`, "Error")
+    @endif
+    @if (Session::has('warning'))
+        toastr["warning"](`{{ str_replace('`', '\`', session('warning')) }}`, "Warning")
+    @endif
+    @if (Session::has('success'))
+        toastr["success"](`{{ str_replace('`', '\`', session('success')) }}`, "Success")
+    @endif
+
     @if (isset($errors) && count($errors) > 0)
         // Handle Lumen validation errors
         @foreach ($errors->all() as $error)
