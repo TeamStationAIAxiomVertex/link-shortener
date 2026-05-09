@@ -4,14 +4,38 @@ Production target:
 
 - Public hostname: `go.teamstation.us`
 - Access model: internal TeamStation users only, enforced by Cloudflare Access
-- App runtime: DigitalOcean App Platform or a DigitalOcean Droplet running Docker
+- App runtime: DigitalOcean Droplet with Apache, PHP, Composer, and MySQL
 - Database: MySQL
 
-## DigitalOcean
+## DigitalOcean Droplet
 
-Use the included `Dockerfile`.
+Use an Ubuntu Droplet. This app does not require Docker.
 
-Required environment variables:
+Install server packages:
+
+```bash
+sudo apt update
+sudo apt install -y apache2 mysql-server composer unzip git \
+  php php-cli php-mbstring php-xml php-curl php-mysql php-zip php-bcmath
+sudo a2enmod rewrite headers
+sudo systemctl enable --now apache2 mysql
+```
+
+Clone the repo:
+
+```bash
+sudo git clone https://github.com/TeamStationAIAxiomVertex/link-shortener.git /var/www/teamstation-link-shortener
+cd /var/www/teamstation-link-shortener
+```
+
+Create the production env file:
+
+```bash
+sudo cp deploy/env.production.example .env
+sudo nano .env
+```
+
+Use these production values:
 
 ```env
 APP_ENV=production
@@ -24,11 +48,11 @@ APP_STYLESHEET=""
 POLR_SETUP_RAN=true
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql-host>
-DB_PORT=25060
-DB_DATABASE=<mysql-database>
-DB_USERNAME=<mysql-user>
-DB_PASSWORD=<mysql-password>
+DB_HOST="127.0.0.1"
+DB_PORT=3306
+DB_DATABASE="teamstation_shortener"
+DB_USERNAME="teamstation_shortener"
+DB_PASSWORD="<strong-db-password>"
 
 SETTING_PUBLIC_INTERFACE=true
 POLR_ALLOW_ACCT_CREATION=false
@@ -65,19 +89,47 @@ TMP_SETUP_AUTH_KEY=""
 MAXMIND_LICENSE_KEY=""
 ```
 
-For first deploy, set:
+Create the database and user:
 
-```env
-RUN_MIGRATIONS=true
+```bash
+sudo mysql
 ```
 
-After the first healthy deploy, set it back to:
-
-```env
-RUN_MIGRATIONS=false
+```sql
+CREATE DATABASE teamstation_shortener CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'teamstation_shortener'@'localhost' IDENTIFIED BY '<strong-db-password>';
+GRANT ALL PRIVILEGES ON teamstation_shortener.* TO 'teamstation_shortener'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
 ```
 
-This avoids migration work on every restart.
+Install dependencies and migrate:
+
+```bash
+sudo composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+sudo php scripts/patch-carbon.php
+sudo php artisan migrate --force
+sudo mkdir -p bootstrap/cache storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+sudo chown -R www-data:www-data storage bootstrap/cache
+sudo chmod +x deploy/deploy-droplet.sh
+```
+
+Configure Apache:
+
+```bash
+sudo cp deploy/apache-go.teamstation.us.conf /etc/apache2/sites-available/go.teamstation.us.conf
+sudo a2dissite 000-default.conf
+sudo a2ensite go.teamstation.us.conf
+sudo apache2ctl configtest
+sudo systemctl reload apache2
+```
+
+Future deploys:
+
+```bash
+cd /var/www/teamstation-link-shortener
+sudo APP_DIR=/var/www/teamstation-link-shortener ./deploy/deploy-droplet.sh
+```
 
 ## Cloudflare
 
@@ -86,7 +138,16 @@ This avoids migration work on every restart.
 ```text
 Type: CNAME
 Name: go
-Target: <your DigitalOcean app hostname>
+Target: <your Droplet hostname or origin hostname>
+Proxy: Proxied
+```
+
+If you only have the Droplet IP, use:
+
+```text
+Type: A
+Name: go
+IPv4 address: <your Droplet IP>
 Proxy: Proxied
 ```
 
