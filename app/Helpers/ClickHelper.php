@@ -33,6 +33,8 @@ class ClickHelper {
         $click->referer = $referer;
         $click->referer_host = ClickHelper::getHost($referer);
         $click->user_agent = $request->server('HTTP_USER_AGENT');
+        $click->created_at = date('Y-m-d H:i:s');
+        $click->updated_at = $click->created_at;
         $click->save();
 
         return true;

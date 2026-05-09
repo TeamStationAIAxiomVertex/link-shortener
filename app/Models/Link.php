@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model {
     protected $table = 'links';
+    public $timestamps = false;
 
     public function setLongUrlAttribute($long_url) {
         // Set crc32 hash and long_url

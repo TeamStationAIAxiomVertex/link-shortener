@@ -93,6 +93,8 @@ class LinkFactory {
         $link->long_url  = $long_url;
         $link->ip        = $link_ip;
         $link->is_custom = $custom_ending != null;
+        $link->created_at = date('Y-m-d H:i:s');
+        $link->updated_at = $link->created_at;
 
         $link->is_api    = $is_api;
 

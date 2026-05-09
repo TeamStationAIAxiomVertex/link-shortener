@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 Dotenv::load(__DIR__.'/../');
@@ -18,6 +20,8 @@ Dotenv::load(__DIR__.'/../');
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
+
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 $app->withFacades();
 $app->withEloquent();
@@ -57,11 +61,6 @@ $app->singleton(
 */
 
 $app->middleware([
-    Illuminate\Cookie\Middleware\EncryptCookies::class,
-    // Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-    Illuminate\Session\Middleware\StartSession::class,
-    Illuminate\View\Middleware\ShareErrorsFromSession::class,
-    App\Http\Middleware\VerifyCsrfToken::class,
 ]);
 
 $app->routeMiddleware([
