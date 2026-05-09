@@ -1,0 +1,10 @@
+.git
+.composer-cache
+.env
+.env.*
+vendor
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+node_modules
