@@ -10,7 +10,7 @@
         <div class="navbar-header">
             <a class="navbar-brand ts-brand" href="{{ route('index') }}">
                 <span class="ts-brand-mark">
-                    <img src="/img/teamstation-logo.png" alt="" aria-hidden="true" />
+                    <img src="/img/teamstation-logo.png" width="36" height="36" alt="" aria-hidden="true" />
                 </span>
                 <span class="ts-brand-text">
                     <strong>{{env('APP_NAME')}}</strong>

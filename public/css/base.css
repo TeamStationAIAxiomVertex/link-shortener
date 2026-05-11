@@ -92,8 +92,10 @@ a:focus {
 
 .ts-brand-mark img {
     display: block;
-    width: 58px;
-    height: 58px;
+    max-width: 36px;
+    max-height: 36px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
 }
 
