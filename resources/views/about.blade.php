@@ -7,7 +7,7 @@
 
 @section('content')
 <div class='well logo-well'>
-    <img class='logo-img' src='/img/logo.png' />
+    <img class='logo-img' src='/img/teamstation-logo.png' alt='TeamStation' />
 </div>
 
 <div class='about-contents'>

@@ -9,7 +9,9 @@
 
         <div class="navbar-header">
             <a class="navbar-brand ts-brand" href="{{ route('index') }}">
-                <span class="ts-brand-mark">T</span>
+                <span class="ts-brand-mark">
+                    <img src="/img/teamstation-logo.png" alt="" aria-hidden="true" />
+                </span>
                 <span class="ts-brand-text">
                     <strong>{{env('APP_NAME')}}</strong>
                     <small>LINK ROUTING OS</small>

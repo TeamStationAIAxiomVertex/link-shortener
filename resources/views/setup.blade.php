@@ -19,7 +19,7 @@ Setup
 
     <div class='col-md-6 setup-body well'>
         <div class='setup-center'>
-            <img class='setup-logo' src='/img/logo.png'>
+            <img class='setup-logo' src='/img/teamstation-logo.png' alt='TeamStation'>
         </div>
 
         <form class='setup-form' method='POST' action='/setup'>

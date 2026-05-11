@@ -19,7 +19,7 @@ Setup Completed
 
     <div class='col-md-6 setup-body well'>
         <div class='setup-center'>
-            <img class='setup-logo' src='/img/logo.png'>
+            <img class='setup-logo' src='/img/teamstation-logo.png' alt='TeamStation'>
         </div>
         <h2>Setup Complete</h2>
         <p>Your Polr setup is complete. To continue, you may <a href='{{route('login')}}'>login</a> or

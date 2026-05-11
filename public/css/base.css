@@ -78,16 +78,23 @@ a:focus {
 }
 
 .ts-brand-mark {
-    display: inline-grid;
-    width: 42px;
-    height: 42px;
-    place-items: center;
-    border: 2px solid #1d2945;
-    border-radius: 50%;
-    box-shadow: inset 7px 0 0 #4f70e8;
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #e3e8f1;
+    border-radius: 14px;
     background: #ffffff;
-    font-weight: 900;
-    line-height: 1;
+}
+
+.ts-brand-mark img {
+    display: block;
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
 }
 
 .ts-brand-text {
